@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N & Z Laundry 24/7 Services | Accra</title>
+    <style>
+        :root {
+            --bg-dark: #090d16;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --accent-cyan: #38bdf8;
+            --accent-green: #22c55e;
+            --accent-purple: #a855f7;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-glow: rgba(56, 189, 248, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.12) 0%, transparent 40%);
+            color: var(--text-main);
+            padding: 20px 12px;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .wrapper {
+            max-width: 520px;
+            width: 100%;
+        }
+
+        /* Glassmorphic Container */
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glow);
+            border-radius: 24px;
+            padding: 24px 18px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+        }
+
+        /* Header Badges */
+        .badge-bar {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.82rem;
+            font-weight: 600;
+        }
+
+        .pill-live {
+            background: rgba(34, 197, 94, 0.15);
+            color: var(--accent-green);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-green);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-green);
+            animation: pulse 1.8s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.3); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .pill-rating {
+            background: rgba(250, 204, 21, 0.12);
+            color: #facc15;
+            border: 1px solid rgba(250, 204, 21, 0.3);
+        }
+
+        /* Titles */
+        .title-section {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff 0%, var(--accent-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 4px;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Quick Action Grid */
+        .action-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        .action-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: #ffffff;
+            box-shadow: 0 4px 20px rgba(34, 197, 94, 0.3);
+        }
+
+        .btn-maps {
+            background: linear-gradient(135deg, #0ea5e9, #0284c7);
+            color: #ffffff;
+            box-shadow: 0 4px 20px rgba(14, 165, 233, 0.3);
+        }
+
+        .action-btn:active {
+            transform: scale(0.97);
+        }
+
+        /* Interactive Tabs */
+        .tab-nav {
+            display: flex;
+            background: rgba(15, 23, 42, 0.6);
+            padding: 4px;
+            border-radius: 14px;
+            margin-bottom: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 10px;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.85rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active {
+            background: var(--accent-cyan);
+            color: #090d16;
+            font-weight: 700;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Explorable Cards */
+        .service-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 14px 16px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent-cyan);
+        }
+
+        .service-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .service-icon {
+            font-size: 1.5rem;
+            background: rgba(56, 189, 248, 0.1);
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+        }
+
+        .service-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .service-desc {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* Location Card */
+        .location-box {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 18px;
+            text-align: left;
+        }
+
+        .location-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .location-title {
+            font-weight: 700;
+            color: var(--accent-cyan);
+        }
+
+        .address-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+            line-height: 1.4;
+        }
+
+        .btn-call-outline {
+            display: block;
+            text-align: center;
+            padding: 12px;
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            transition: background 0.2s ease;
+        }
+
+        .btn-call-outline:hover {
+            background: rgba(56, 189, 248, 0.1);
+        }
+
+        .footer {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.78rem;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="glass-card">
+            
+            <!-- Badges -->
+            <div class="badge-bar">
+                <div class="pill pill-live">
+                    <span class="pulse-dot"></span> Open 24/7 Now
+                </div>
+                <div class="pill pill-rating">
+                    ⭐ 4.9 (17 Google Reviews)
+                </div>
+            </div>
+
+            <!-- Header -->
+            <div class="title-section">
+                <h1>N & Z Laundry</h1>
+                <p class="subtitle">Premium 24-Hour Express Laundry & Dry Cleaning</p>
+            </div>
+
+            <!-- Primary Call To Action Buttons -->
+            <div class="action-grid">
+                <a href="https://wa.me/233240064776?text=Hello%20N%20%26%20Z%20Laundry,%20I%20want%20to%20inquire%20about%20your%20services." 
+                   target="_blank" 
+                   class="action-btn btn-whatsapp">
+                    📱 WhatsApp
+                </a>
+                
+                <!-- Direct Google Maps Directions Link -->
+                <a href="https://www.google.com/maps/search/?api=1&query=N+%26+Z+Laundry+24%2F7+services+Alajo+St+Accra" 
+                   target="_blank" 
+                   class="action-btn btn-maps">
+                    📍 Directions
+                </a>
+            </div>
+
+            <!-- Explorable Interactive Tabs -->
+            <div class="tab-nav">
+                <button class="tab-btn active" onclick="openTab('services', this)">Services</button>
+                <button class="tab-btn" onclick="openTab('location', this)">Location</button>
+                <button class="tab-btn" onclick="openTab('hours', this)">Working Hours</button>
+            </div>
+
+            <!-- Tab 1: Services List -->
+            <div id="services" class="tab-content active">
+                <div class="service-card">
+                    <div class="service-info">
+                        <div class="service-icon">✨</div>
+                        <div>
+                            <div class="service-title">Dry Cleaning</div>
+                            <div class="service-desc">Suits, formal wear, and delicate fabrics</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-info">
+                        <div class="service-icon">🛏️</div>
+                        <div>
+                            <div class="service-title">Quilt & Bedding Wash</div>
+                            <div class="service-desc">Duvets, heavy blankets, and bedsheets</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-info">
+                        <div class="service-icon">👕</div>
+                        <div>
+                            <div class="service-title">Wash & Tumble Drying</div>
+                            <div class="service-desc">Daily clothes washed, dried, and folded</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-info">
+                        <div class="service-icon">🚚</div>
+                        <div>
+                            <div class="service-title">Doorstep Pickup & Delivery</div>
+                            <div class="service-desc">We pick up and drop off anywhere in Accra</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 2: Interactive Location -->
+            <div id="location" class="tab-content">
+                <div class="location-box">
+                    <div class="location-header">
+                        <span style="font-size: 1.4rem;">🗺️</span>
+                        <div class="location-title">Find Us on the Map</div>
+                    </div>
+                    <div class="address-text">
+                        <strong>N & Z Laundry 24/7 Services</strong><br>
+                        Alajo Street, Accra, Ghana
+                    </div>
+
+                    <!-- Tap to Open Google Maps -->
+                    <a href="https://www.google.com/maps/search/?api=1&query=N+%26+Z+Laundry+24%2F7+services+Alajo+St+Accra" 
+                       target="_blank" 
+                       class="action-btn btn-maps" style="width: 100%;">
+                        🗺️ Open Live Google Maps Navigation
+                    </a>
+
+                    <a href="tel:0240064776" class="btn-call-outline">
+                        📞 Call 024 006 4776
+                    </a>
+                </div>
+            </div>
+
+            <!-- Tab 3: Hours -->
+            <div id="hours" class="tab-content">
+                <div class="location-box">
+                    <div class="location-header">
+                        <span style="font-size: 1.4rem;">⏰</span>
+                        <div class="location-title">Operating Schedule</div>
+                    </div>
+                    <div class="address-text">
+                        <strong>Monday – Sunday:</strong> Open 24 Hours<br>
+                        <em>Express overnight washing and express same-day pickups available anytime.</em>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer">
+            Designed by Salih Tech
+        </div>
+    </div>
+
+    <!-- Tab Switcher JavaScript -->
+    <script>
+        function openTab(tabName, element) {
+            // Hide all tab content
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Show selected tab and set button active
+            document.getElementById(tabName).classList.add('active');
+            element.classList.add('active');
+        }
+    </script>
+</body>
+</html>
